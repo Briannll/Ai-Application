@@ -56,7 +56,15 @@ const Main = () => {
             </div>
             <div className="result-data">
               <img src={assets.gemini_icon} alt="" />
-              <p dangerouslySetInnerHTML={{__html:resultData}}></p>
+              {loading ? (
+                <div className="loader">
+                  <hr />
+                  <hr />
+                  <hr />
+                </div>
+              ) : (
+                <p dangerouslySetInnerHTML={{ __html: resultData }}></p>
+              )}
             </div>
           </div>
         )}
@@ -72,7 +80,7 @@ const Main = () => {
             <div>
               <img src={assets.gallery_icon} />
               <img src={assets.mic_icon} />
-              <img onClick={() => onSent()} src={assets.send_icon} />
+              {input && <img onClick={() => onSent()} src={assets.send_icon} />}
             </div>
           </div>
           <p className="bottom-info">
